@@ -1,0 +1,430 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Inter:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#1A1A2E;
+    --yellow:#FFD60A;
+    --mint:#06D6A0;
+    --coral:#FF6B6B;
+    --purple:#845EC2;
+    --gray:#F0F0F0;
+    --border:#e8e8ef;
+    --muted:#8a8a9a;
+  }
+  body{font-family:'Inter',Arial,sans-serif;background:#fafafa}
+
+  .ig{max-width:480px;margin:0 auto;background:#fff;border:1px solid var(--border);min-height:100vh}
+
+  /* TOP BAR */
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--border);background:#fff;position:sticky;top:0;z-index:20}
+  .logo-wrap{display:flex;align-items:center;gap:8px}
+  .logo-text{font-family:'Nunito',sans-serif;font-weight:800;font-size:22px;color:var(--navy);letter-spacing:-0.5px}
+  .logo-dots{display:flex;gap:3.5px;align-items:center;margin-top:1px}
+  .logo-dots span{width:6px;height:6px;border-radius:50%;display:inline-block}
+  .d1{background:var(--yellow)}
+  .d2{background:var(--mint)}
+  .d3{background:var(--coral)}
+  .d4{background:var(--purple)}
+  .topbar-icons{display:flex;gap:18px}
+  .topbar-icons i{font-size:22px;color:var(--navy);cursor:pointer}
+
+  /* STORIES */
+  .stories{display:flex;gap:12px;padding:12px 16px;overflow-x:auto;border-bottom:1px solid var(--border)}
+  .stories::-webkit-scrollbar{display:none}
+  .story{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;cursor:pointer}
+  .s-ring{width:58px;height:58px;border-radius:50%;padding:2.5px;display:flex;align-items:center;justify-content:center}
+  .s-ring.y{background:linear-gradient(135deg,var(--yellow),var(--coral))}
+  .s-ring.m{background:linear-gradient(135deg,var(--mint),var(--yellow))}
+  .s-ring.c{background:linear-gradient(135deg,var(--coral),var(--purple))}
+  .s-ring.p{background:linear-gradient(135deg,var(--purple),var(--mint))}
+  .s-ring.add{background:none;border:1.5px solid var(--border)}
+  .s-avatar{width:100%;height:100%;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:#fff;border:2px solid #fff}
+  .s-label{font-size:11px;color:#222;max-width:62px;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* PROFILE STRIP */
+  .profile-strip{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--border)}
+  .profile-avatar{width:72px;height:72px;border-radius:50%;background:var(--navy);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:20px;color:var(--yellow);border:3px solid var(--yellow)}
+  .profile-info{flex:1}
+  .profile-handle{font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;color:var(--navy)}
+  .profile-name{font-size:13px;color:var(--muted);margin-top:1px}
+  .profile-bio{font-size:12px;color:#333;line-height:1.45;margin-top:5px}
+  .profile-link{font-size:12px;color:#5851DB;margin-top:2px}
+  .profile-stats{display:flex;gap:16px;margin-top:10px}
+  .profile-stats div{text-align:center}
+  .ps-num{font-family:'Nunito',sans-serif;font-weight:800;font-size:15px;color:var(--navy)}
+  .ps-label{font-size:11px;color:var(--muted)}
+  .follow-btn{margin-top:8px;width:100%;background:var(--yellow);color:var(--navy);font-family:'Nunito',sans-serif;font-weight:800;font-size:13px;border:none;border-radius:8px;padding:7px;cursor:pointer}
+
+  /* POST */
+  .post{border-bottom:1px solid var(--border)}
+  .post-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px}
+  .ph-left{display:flex;align-items:center;gap:9px}
+  .ph-avatar{width:34px;height:34px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:10px;flex-shrink:0}
+  .ph-handle{font-size:13px;font-weight:500;color:#111}
+  .ph-sub{font-size:11px;color:var(--muted)}
+  .ph-menu{font-size:20px;color:#555;cursor:pointer}
+
+  /* POST VISUAL */
+  .pv{width:100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer}
+  .pv.navy{background:var(--navy)}
+  .pv.yellow{background:var(--yellow)}
+  .pv.mint{background:#04C090}
+  .pv.coral{background:var(--coral)}
+  .pv.purple{background:var(--purple)}
+  .pv.dark{background:#0E0E20}
+
+  .pv-tag{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+  .pv-tag.light{color:rgba(255,255,255,0.6)}
+  .pv-tag.dark{color:rgba(26,26,46,0.55)}
+  .pv-head{font-family:'Nunito',sans-serif;font-weight:800;font-size:30px;line-height:1.15;text-align:center;padding:0 26px}
+  .pv-head.white{color:#fff}
+  .pv-head.navy{color:var(--navy)}
+  .pv-head em{font-style:normal}
+  .pv-sub{font-family:'Inter',sans-serif;font-size:13px;line-height:1.5;text-align:center;padding:8px 26px 0}
+  .pv-sub.white{color:rgba(255,255,255,0.8)}
+  .pv-sub.navy{color:rgba(26,26,46,0.7)}
+  .pv-stat-num{font-family:'Nunito',sans-serif;font-weight:800;font-size:68px;color:var(--yellow);line-height:1}
+  .pv-stat-lbl{font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.65);margin-top:5px}
+  .deco{position:absolute;border-radius:50%;opacity:.09}
+
+  /* Brand stamp */
+  .brand-stamp{position:absolute;bottom:13px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:6px;white-space:nowrap}
+  .bs-text{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px}
+  .bs-text.light{color:rgba(255,255,255,0.45)}
+  .bs-text.dark{color:rgba(26,26,46,0.4)}
+  .bs-dots{display:flex;gap:3px;align-items:center}
+  .bs-dots span{width:4px;height:4px;border-radius:50%;display:inline-block}
+  .bs-dots.light span{background:rgba(255,255,255,0.4)}
+  .bs-dots.dark span{background:rgba(26,26,46,0.35)}
+
+  /* POST ACTIONS */
+  .pa{display:flex;align-items:center;justify-content:space-between;padding:8px 14px 3px}
+  .pa-left{display:flex;gap:14px}
+  .pa i{font-size:22px;color:#222;cursor:pointer}
+  .p-likes{font-size:13px;font-weight:500;color:#111;padding:0 14px 2px}
+  .p-cap{font-size:13px;color:#222;padding:0 14px 2px;line-height:1.5}
+  .p-cap strong{font-weight:600}
+  .p-tags{font-size:12px;color:#5851DB;padding:0 14px 5px}
+  .p-time{font-size:11px;color:var(--muted);padding:0 14px 10px}
+
+  /* CAROUSEL */
+  .cwrap{position:relative;width:100%;overflow:hidden}
+  .ctrack{display:flex;transition:transform .36s cubic-bezier(.4,0,.2,1)}
+  .cslide{flex:0 0 100%;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .cdots{display:flex;justify-content:center;gap:5px;padding:7px 0 0}
+  .cdots span{width:6px;height:6px;border-radius:50%;background:var(--border);transition:background .2s}
+  .cdots span.on{background:var(--navy)}
+  .cbtn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.88);border:none;border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:5}
+  .cbtn.l{left:8px}
+  .cbtn.r{right:8px}
+  .ctag{font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+  .chead{font-family:'Nunito',sans-serif;font-weight:800;font-size:26px;line-height:1.2;text-align:center;padding:0 28px}
+  .cbody{font-family:'Inter',sans-serif;font-size:13px;line-height:1.55;text-align:center;padding:9px 28px 0;opacity:.8}
+  .cnum{font-family:'Nunito',sans-serif;font-weight:800;font-size:70px;line-height:1}
+  .cnl{font-family:'Inter',sans-serif;font-size:12px;margin-top:3px;opacity:.65}
+  .ccount{position:absolute;top:12px;right:14px;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;opacity:.45}
+  .cpill{border-radius:100px;padding:6px 16px;font-size:12px;font-family:'Nunito',sans-serif;font-weight:700;margin-top:14px;cursor:pointer}
+
+  /* Bottom nav */
+  .bnav{display:flex;justify-content:space-around;align-items:center;padding:10px 0 14px;border-top:1px solid var(--border);background:#fff;position:sticky;bottom:0}
+  .bnav i{font-size:24px;color:#555;cursor:pointer}
+  .bnav .bnav-me{width:26px;height:26px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:9px;font-weight:800;color:var(--yellow)}
+</style>
+
+<h2 class="sr-only">Syllabus Instagram profile mockup — 6 posts and interactive carousel, Syllabus branding</h2>
+
+<div class="ig">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo-wrap">
+      <div>
+        <div class="logo-text">syllabus</div>
+        <div class="logo-dots"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+      </div>
+    </div>
+    <div class="topbar-icons">
+      <i class="ti ti-heart" aria-hidden="true"></i>
+      <i class="ti ti-send" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile-strip">
+    <div class="profile-avatar">
+      <div style="text-align:center;line-height:1">
+        <div style="font-size:11px;letter-spacing:0.5px">syllabus</div>
+        <div style="display:flex;gap:2px;justify-content:center;margin-top:3px"><span style="width:5px;height:5px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:5px;height:5px;border-radius:50%;background:var(--purple);display:inline-block"></span></div>
+      </div>
+    </div>
+    <div style="flex:1">
+      <div style="display:flex;gap:20px;align-items:center;margin-bottom:8px">
+        <div><div class="ps-num">104</div><div class="ps-label">posts</div></div>
+        <div><div class="ps-num">25K</div><div class="ps-label">followers</div></div>
+        <div><div class="ps-num">50+</div><div class="ps-label">countries</div></div>
+      </div>
+      <button class="follow-btn">follow</button>
+    </div>
+  </div>
+  <div style="padding:8px 16px 12px;border-bottom:1px solid var(--border)">
+    <div style="font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--navy)">syllabus</div>
+    <div style="font-size:12px;color:#333;line-height:1.5;margin-top:3px">📖 Learn AI. For real.<br>Weekly AI newsletter for founders, operators & leaders.<br>No jargon. No hype. Just what works.</div>
+    <div style="font-size:12px;color:#5851DB;margin-top:4px">syllabus.com · every sunday 🗓</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:3px">powered by rajeevkapur.ai</div>
+  </div>
+
+  <!-- STORIES ROW -->
+  <div class="stories">
+    <div class="story">
+      <div class="s-ring add"><div class="s-avatar" style="background:var(--gray);color:var(--navy)"><i class="ti ti-plus" style="font-size:18px" aria-hidden="true"></i></div></div>
+      <span class="s-label">new</span>
+    </div>
+    <div class="story">
+      <div class="s-ring y"><div class="s-avatar" style="font-size:9px">ai 101</div></div>
+      <span class="s-label">ai 101</span>
+    </div>
+    <div class="story">
+      <div class="s-ring m"><div class="s-avatar" style="background:#062a1a;font-size:9px">ai 201</div></div>
+      <span class="s-label">ai 201</span>
+    </div>
+    <div class="story">
+      <div class="s-ring c"><div class="s-avatar" style="background:#2a0a10;font-size:9px">ai 301</div></div>
+      <span class="s-label">ai 301</span>
+    </div>
+    <div class="story">
+      <div class="s-ring p"><div class="s-avatar" style="background:#1a0d2a;font-size:9px">ai 401</div></div>
+      <span class="s-label">ai 401</span>
+    </div>
+    <div class="story">
+      <div class="s-ring" style="background:linear-gradient(135deg,var(--yellow),var(--navy))"><div class="s-avatar" style="font-size:9px">tips</div></div>
+      <span class="s-label">tips</span>
+    </div>
+  </div>
+
+  <!-- POST 1 — Big stat -->
+  <div class="post">
+    <div class="post-header">
+      <div class="ph-left">
+        <div class="ph-avatar" style="color:var(--yellow);font-size:9px;text-align:center;line-height:1.2">syllabus<br><span style="font-size:7px;display:flex;gap:2px;justify-content:center;margin-top:1px"><span style="width:4px;height:4px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block"></span></span></div>
+        <div><div class="ph-handle">syllabus.ai</div><div class="ph-sub">syllabus.com</div></div>
+      </div>
+      <i class="ti ti-dots ph-menu" aria-hidden="true"></i>
+    </div>
+    <div class="pv navy">
+      <div class="deco" style="width:220px;height:220px;background:var(--yellow);top:-70px;right:-60px"></div>
+      <div class="deco" style="width:130px;height:130px;background:var(--mint);bottom:-40px;left:-30px"></div>
+      <div class="pv-tag light">the reality check</div>
+      <div class="pv-stat-num">77%</div>
+      <div class="pv-stat-lbl">of business leaders feel behind on AI</div>
+      <div class="pv-sub white" style="margin-top:10px">That gap is your opportunity.<br>We help you close it — every Sunday.</div>
+      <div class="brand-stamp">
+        <span class="bs-text light">syllabus</span>
+        <div class="bs-dots light"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+      </div>
+    </div>
+    <div class="pa"><div class="pa-left"><i class="ti ti-heart" aria-hidden="true"></i><i class="ti ti-message-circle" aria-hidden="true"></i><i class="ti ti-send" aria-hidden="true"></i></div><i class="ti ti-bookmark" aria-hidden="true"></i></div>
+    <div class="p-likes">5,204 likes</div>
+    <div class="p-cap"><strong>syllabus.ai</strong> 77% of leaders feel behind on AI. You don't have to. Every Sunday we close that gap — in 5 minutes. Link in bio → syllabus.com</div>
+    <div class="p-tags">#AILiteracy #LeadWithAI #Syllabus #FutureOfWork</div>
+    <div class="p-time">2 days ago</div>
+  </div>
+
+  <!-- POST 2 — Quote -->
+  <div class="post">
+    <div class="post-header">
+      <div class="ph-left">
+        <div class="ph-avatar" style="color:var(--yellow);font-size:9px;text-align:center;line-height:1.2">syllabus<br><span style="font-size:7px;display:flex;gap:2px;justify-content:center;margin-top:1px"><span style="width:4px;height:4px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block"></span></span></div>
+        <div><div class="ph-handle">syllabus.ai</div><div class="ph-sub">syllabus.com</div></div>
+      </div>
+      <i class="ti ti-dots ph-menu" aria-hidden="true"></i>
+    </div>
+    <div class="pv yellow">
+      <div class="deco" style="width:200px;height:200px;background:var(--navy);bottom:-60px;right:-50px;opacity:0.07"></div>
+      <div class="pv-tag dark">this week's lesson</div>
+      <div class="pv-head navy" style="font-size:24px;max-width:300px">"AI won't replace you.<br>A person using AI will."</div>
+      <div class="pv-sub navy" style="font-size:13px;margin-top:8px;opacity:0.6">Learn how to be that person at syllabus.com</div>
+      <div class="brand-stamp">
+        <span class="bs-text dark">syllabus</span>
+        <div class="bs-dots dark"><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span></div>
+      </div>
+    </div>
+    <div class="pa"><div class="pa-left"><i class="ti ti-heart" aria-hidden="true"></i><i class="ti ti-message-circle" aria-hidden="true"></i><i class="ti ti-send" aria-hidden="true"></i></div><i class="ti ti-bookmark" aria-hidden="true"></i></div>
+    <div class="p-likes">6,890 likes</div>
+    <div class="p-cap"><strong>syllabus.ai</strong> Save this. Share it with someone who needs a nudge. 🔖 Read the full breakdown in this week's edition → syllabus.com</div>
+    <div class="p-tags">#AI #WeeklyLesson #Syllabus #FutureReady</div>
+    <div class="p-time">4 days ago</div>
+  </div>
+
+  <!-- POST 3 — CAROUSEL -->
+  <div class="post">
+    <div class="post-header">
+      <div class="ph-left">
+        <div class="ph-avatar" style="color:var(--yellow);font-size:9px;text-align:center;line-height:1.2">syllabus<br><span style="font-size:7px;display:flex;gap:2px;justify-content:center;margin-top:1px"><span style="width:4px;height:4px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block"></span></span></div>
+        <div><div class="ph-handle">syllabus.ai</div><div class="ph-sub">syllabus.com</div></div>
+      </div>
+      <i class="ti ti-dots ph-menu" aria-hidden="true"></i>
+    </div>
+    <div class="cwrap">
+      <div class="ctrack" id="ct">
+        <!-- Slide 1 -->
+        <div class="cslide navy">
+          <div class="deco" style="width:220px;height:220px;background:var(--yellow);top:-70px;left:-60px"></div>
+          <div class="deco" style="width:160px;height:160px;background:var(--purple);bottom:-50px;right:-40px"></div>
+          <span class="ccount" style="color:rgba(255,255,255,0.45)">1 / 5</span>
+          <div class="ctag" style="color:var(--yellow)">6 keys to ai success</div>
+          <div class="chead" style="color:#fff">every leader needs to know this</div>
+          <div class="cbody" style="color:rgba(255,255,255,0.75)">Swipe through the framework helping 25,000+ readers cut through the AI noise — every Sunday.</div>
+          <div class="cpill" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.8)">swipe to start →</div>
+          <div class="brand-stamp" style="bottom:13px">
+            <span class="bs-text light">syllabus</span>
+            <div class="bs-dots light"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="cslide" style="background:#0E0E20">
+          <span class="ccount" style="color:rgba(255,255,255,0.35)">2 / 5</span>
+          <div class="cnum" style="color:var(--yellow)">01</div>
+          <div class="cnl" style="color:rgba(255,255,255,0.55)">clarity over tools</div>
+          <div class="chead" style="color:#fff;font-size:21px;margin-top:10px">know the outcome<br>before you open ChatGPT</div>
+          <div class="cbody" style="color:rgba(255,255,255,0.65)">Most AI efforts fail because people chase tools, not results. Define the win first.</div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="cslide" style="background:#062018">
+          <span class="ccount" style="color:rgba(255,255,255,0.35)">3 / 5</span>
+          <div class="cnum" style="color:var(--mint)">02</div>
+          <div class="cnl" style="color:rgba(255,255,255,0.55)">literacy over fluency</div>
+          <div class="chead" style="color:#fff;font-size:21px;margin-top:10px">you don't need to code.<br>you need to lead.</div>
+          <div class="cbody" style="color:rgba(255,255,255,0.65)">AI literacy means knowing enough to ask better questions and recognize a good answer.</div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="cslide" style="background:#200A12">
+          <span class="ccount" style="color:rgba(255,255,255,0.35)">4 / 5</span>
+          <div class="cnum" style="color:var(--coral)">03</div>
+          <div class="cnl" style="color:rgba(255,255,255,0.55)">small pilots, real proof</div>
+          <div class="chead" style="color:#fff;font-size:21px;margin-top:10px">don't transform.<br>run one experiment.</div>
+          <div class="cbody" style="color:rgba(255,255,255,0.65)">A quick win builds trust and momentum. Pick one use case and prove the value fast.</div>
+        </div>
+        <!-- Slide 5 — CTA -->
+        <div class="cslide navy">
+          <div class="deco" style="width:200px;height:200px;background:var(--yellow);top:-60px;right:-50px"></div>
+          <span class="ccount" style="color:rgba(255,255,255,0.35)">5 / 5</span>
+          <div class="ctag" style="color:var(--yellow)">get all 6 keys</div>
+          <div class="chead" style="color:#fff;font-size:22px">get the full framework<br>free every sunday</div>
+          <div class="cbody" style="color:rgba(255,255,255,0.75)">25,000+ founders, operators, and leaders get practical AI guidance in their inbox every week.</div>
+          <div class="cpill" style="background:var(--yellow);color:var(--navy);border:none;margin-top:16px;font-size:13px">subscribe at syllabus.com →</div>
+          <div class="brand-stamp" style="bottom:13px">
+            <span class="bs-text light">syllabus</span>
+            <div class="bs-dots light"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+          </div>
+        </div>
+      </div>
+      <button class="cbtn l" id="cprev" aria-label="previous"><i class="ti ti-chevron-left" style="font-size:14px;color:var(--navy)" aria-hidden="true"></i></button>
+      <button class="cbtn r" id="cnext" aria-label="next"><i class="ti ti-chevron-right" style="font-size:14px;color:var(--navy)" aria-hidden="true"></i></button>
+    </div>
+    <div class="cdots" id="cdd"><span class="on"></span><span></span><span></span><span></span><span></span></div>
+    <div class="pa"><div class="pa-left"><i class="ti ti-heart" aria-hidden="true"></i><i class="ti ti-message-circle" aria-hidden="true"></i><i class="ti ti-send" aria-hidden="true"></i></div><i class="ti ti-bookmark" aria-hidden="true"></i></div>
+    <div class="p-likes">9,340 likes</div>
+    <div class="p-cap"><strong>syllabus.ai</strong> 6 Keys to AI Success — save this framework. Start with #1. Get the rest free every Sunday → syllabus.com (link in bio)</div>
+    <div class="p-tags">#AILeadership #Syllabus #BusinessAI #LearnAI</div>
+    <div class="p-time">1 week ago</div>
+  </div>
+
+  <!-- POST 4 — Newsletter stat -->
+  <div class="post">
+    <div class="post-header">
+      <div class="ph-left">
+        <div class="ph-avatar" style="color:var(--yellow);font-size:9px;text-align:center;line-height:1.2">syllabus<br><span style="font-size:7px;display:flex;gap:2px;justify-content:center;margin-top:1px"><span style="width:4px;height:4px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block"></span></span></div>
+        <div><div class="ph-handle">syllabus.ai</div><div class="ph-sub">syllabus.com</div></div>
+      </div>
+      <i class="ti ti-dots ph-menu" aria-hidden="true"></i>
+    </div>
+    <div class="pv dark">
+      <div class="deco" style="width:260px;height:260px;background:var(--yellow);top:-100px;right:-80px;opacity:0.06"></div>
+      <div class="pv-tag light">milestone</div>
+      <div class="pv-stat-num" style="font-size:72px">25K+</div>
+      <div class="pv-stat-lbl">readers in 50+ countries</div>
+      <div class="pv-sub white" style="margin-top:10px;font-size:13px">Every Sunday. 5 minutes.<br>The AI newsletter leaders actually read.</div>
+      <div class="brand-stamp">
+        <span class="bs-text light">syllabus</span>
+        <div class="bs-dots light"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+      </div>
+    </div>
+    <div class="pa"><div class="pa-left"><i class="ti ti-heart" aria-hidden="true"></i><i class="ti ti-message-circle" aria-hidden="true"></i><i class="ti ti-send" aria-hidden="true"></i></div><i class="ti ti-bookmark" aria-hidden="true"></i></div>
+    <div class="p-likes">11,780 likes</div>
+    <div class="p-cap"><strong>syllabus.ai</strong> 25,000 readers. 50+ countries. 104 editions. Thank you for being part of this 🙏 → syllabus.com</div>
+    <div class="p-tags">#Milestone #25K #Syllabus #AINewsletter</div>
+    <div class="p-time">2 weeks ago</div>
+  </div>
+
+  <!-- POST 5 — Course -->
+  <div class="post">
+    <div class="post-header">
+      <div class="ph-left">
+        <div class="ph-avatar" style="color:var(--yellow);font-size:9px;text-align:center;line-height:1.2">syllabus<br><span style="font-size:7px;display:flex;gap:2px;justify-content:center;margin-top:1px"><span style="width:4px;height:4px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block"></span></span></div>
+        <div><div class="ph-handle">syllabus.ai</div><div class="ph-sub">syllabus.com</div></div>
+      </div>
+      <i class="ti ti-dots ph-menu" aria-hidden="true"></i>
+    </div>
+    <div class="pv purple">
+      <div class="deco" style="width:180px;height:180px;background:#fff;top:-55px;right:-40px;opacity:0.05"></div>
+      <div class="pv-tag light">new at syllabus.com</div>
+      <div class="pv-head white" style="font-size:26px">ai 401:<br><em style="color:var(--yellow)">agent systems</em></div>
+      <div class="pv-sub white" style="font-size:13px;margin-top:8px">Build multi-agent workflows that run your business. No code. Just clarity.</div>
+      <div style="margin-top:16px;background:var(--yellow);color:var(--navy);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;padding:8px 22px;border-radius:100px;cursor:pointer">enroll now →</div>
+      <div class="brand-stamp">
+        <span class="bs-text light">syllabus</span>
+        <div class="bs-dots light"><span class="d1"></span><span class="d2"></span><span class="d3"></span><span class="d4"></span></div>
+      </div>
+    </div>
+    <div class="pa"><div class="pa-left"><i class="ti ti-heart" aria-hidden="true"></i><i class="ti ti-message-circle" aria-hidden="true"></i><i class="ti ti-send" aria-hidden="true"></i></div><i class="ti ti-bookmark" aria-hidden="true"></i></div>
+    <div class="p-likes">3,615 likes</div>
+    <div class="p-cap"><strong>syllabus.ai</strong> AI 401 is live. Agents, automation, real ROI — no technical background needed. Who's enrolling? Drop a 🙋 below.</div>
+    <div class="p-tags">#AIAgents #Automation #Syllabus #AIEducation</div>
+    <div class="p-time">3 weeks ago</div>
+  </div>
+
+  <!-- POST 6 — Tip -->
+  <div class="post">
+    <div class="post-header">
+      <div class="ph-left">
+        <div class="ph-avatar" style="color:var(--yellow);font-size:9px;text-align:center;line-height:1.2">syllabus<br><span style="font-size:7px;display:flex;gap:2px;justify-content:center;margin-top:1px"><span style="width:4px;height:4px;border-radius:50%;background:var(--yellow);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--mint);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--coral);display:inline-block"></span><span style="width:4px;height:4px;border-radius:50%;background:var(--purple);display:inline-block"></span></span></div>
+        <div><div class="ph-handle">syllabus.ai</div><div class="ph-sub">syllabus.com</div></div>
+      </div>
+      <i class="ti ti-dots ph-menu" aria-hidden="true"></i>
+    </div>
+    <div class="pv mint">
+      <div class="deco" style="width:160px;height:160px;background:var(--navy);top:-40px;left:-30px;opacity:0.1"></div>
+      <div class="pv-tag dark">sunday tip</div>
+      <div class="pv-head navy" style="font-size:24px;line-height:1.2">stop using AI<br>to do your work.<br><em style="color:var(--navy);text-decoration:underline;text-decoration-color:var(--coral)">use it to think.</em></div>
+      <div class="pv-sub navy" style="font-size:13px;margin-top:8px;opacity:0.65">Start prompts with "help me think through…" not "write me a…"</div>
+      <div class="brand-stamp">
+        <span class="bs-text dark">syllabus</span>
+        <div class="bs-dots" style="display:flex;gap:3px;align-items:center"><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span><span style="background:rgba(26,26,46,0.35);width:4px;height:4px;border-radius:50%;display:inline-block"></span></div>
+      </div>
+    </div>
+    <div class="pa"><div class="pa-left"><i class="ti ti-heart" aria-hidden="true"></i><i class="ti ti-message-circle" aria-hidden="true"></i><i class="ti ti-send" aria-hidden="true"></i></div><i class="ti ti-bookmark" aria-hidden="true"></i></div>
+    <div class="p-likes">5,902 likes</div>
+    <div class="p-cap"><strong>syllabus.ai</strong> This one shift changes everything. Save it. Try it today. Get more like this every Sunday → syllabus.com 🧠</div>
+    <div class="p-tags">#AITips #Prompting #Syllabus #ThinkWithAI</div>
+    <div class="p-time">1 month ago</div>
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <div class="bnav">
+    <i class="ti ti-home" style="color:var(--navy)" aria-hidden="true"></i>
+    <i class="ti ti-search" aria-hidden="true"></i>
+    <i class="ti ti-square-plus" aria-hidden="true"></i>
+    <i class="ti ti-movie" aria-hidden="true"></i>
+    <div class="bnav-me">s</div>
+  </div>
+</div>
+
+<script>
+const ct=document.getElementById('ct');
+const cdd=document.querySelectorAll('#cdd span');
+let ci=0,tot=5;
+function go(n){ci=Math.max(0,Math.min(tot-1,n));ct.style.transform=`translateX(-${ci*100}%)`;cdd.forEach((d,i)=>d.classList.toggle('on',i===ci));}
+document.getElementById('cnext').addEventListener('click',()=>go(ci+1));
+document.getElementById('cprev').addEventListener('click',()=>go(ci-1));
+</script>
